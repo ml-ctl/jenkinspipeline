@@ -4,10 +4,10 @@ pipeline {
     tools {
         maven 'localMaven'
     }
-    
+
     parameters {
          string(name: 'tomcat_dev', defaultValue: '127.0.0.1', description: 'Staging Server')
-         string(name: 'tomcat_prod', defaultValue: '18.188.104.201', description: 'Production Server')
+         string(name: 'tomcat_prod', defaultValue: '127.0.0.1', description: 'Production Server')
     }
 
     triggers {
@@ -37,7 +37,7 @@ pipeline {
 
                 stage ("Deploy to Production"){
                     steps {
-                        sh "scp -i /Users/DCHENG/Dev/aws/security/cs-tomcat-work.pem **/target/*.war ec2-user@${params.tomcat_prod}:/root/apache-tomcat-9.0.34/webapps"
+                        sh "cp **/target/*.war /Users/DCHENG/Documents/Dev/apache-tomcat-9.0.34-prod/webapps"
                     }
                 }
             }
