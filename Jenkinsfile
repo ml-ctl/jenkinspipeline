@@ -5,12 +5,12 @@ pipeline {
     tools {
         maven 'localMaven'
     }
-    
+
     stages{
         stage('Build'){
             steps {
                 echo 'Building...'
-                sh 'mvn clean package2'
+                sh 'mvn clean package'
             }
             post {
                 success {
