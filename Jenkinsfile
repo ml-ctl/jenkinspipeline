@@ -2,6 +2,10 @@ pipeline {
     /* A Declarative Pipeline */
     agent any
 
+    tools {
+        maven 'localMaven'
+    }
+    
     stages{
         stage('Build'){
             steps {
